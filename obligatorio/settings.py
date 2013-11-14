@@ -4,7 +4,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Mery', 'metanoia023@gmail.com'),
+    ('Mery', 'metanoia023@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -123,6 +123,12 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
