@@ -1,0 +1,30 @@
+{% extends "tickets/Base/base.html" %}
+{% block title %}Listado de Espectáculos{% endblock %}
+{% block header %}
+{{ block.super }}
+<div align="center"><h1>Listado de Espectáculos</h1>
+{% endblock %}
+{% block content %}
+<form id="form1" name="form1" method="post" action="">
+{% csrf_token %} 
+<input type="submit" value= "Buscar"/>
+Buscar:<input  type="text"  name="buscar"  id="buscar"  value="{%  if  busqueda  !=  None  %} 
+{{busqueda}} {% endif %}" />
+<table width="36%" border="0" align="center">
+<tr>
+<td width="33%"><strong>Nombre</strong></td>
+<td width="32%"><strong>Descripción</strong></td>
+<td width="35%"><strong>Lugar</strong></td>
+<td width="35%"><strong>Fecha y hora</strong></td>
+</tr>
+{% for P in personas %}
+<tr bgcolor="{% cycle '#CCCCCC' '#FFFFFF' %}">
+<td><a href="/persona/{{P.id}}/">{{P.documento}}</a></td>
+<td>{{P.nombre}}</td>
+<td>{{P.apellido}}</td>
+</tr>
+{% empty %}
+<tr><td colspan="3" bgcolor="#FF0000" style="color:#FFF">No existen espectáculos</td></tr>
+{% endfor %}
+</table>
+{% endblock %}
