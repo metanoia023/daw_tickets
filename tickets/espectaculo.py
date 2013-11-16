@@ -5,6 +5,6 @@ class Espectaculo(models.Model):
    categoria = models.ForeignKey('Categoria')
    hora = models.DateTimeField()
    estado = models.BooleanField()
-   descripcion = models.CharField(max_length = 100)
+   descripcion = models.CharField(max_length = 300)
    sectores = models.ManyToManyField('Sector', through = 'Precio')
    

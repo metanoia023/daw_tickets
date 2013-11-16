@@ -8,7 +8,7 @@ urlpatterns = patterns(
     '',
     url(r'^$', 'tickets.views.index'),
     #Incluyo urls para procesar url de los modelos.
-'''    url(r'^lugar/', include('tickets.Lugar.urls')),
+''' url(r'^lugar/', include('tickets.Lugar.urls')),
 	url(r'^categoria/', include('tickets.Categoria.urls')),
 	url(r'^espectaculo/', include('tickets.Espectaculo.urls')),
 	url(r'^sector/', include('tickets.Sector.urls')),
