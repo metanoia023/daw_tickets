@@ -15,23 +15,24 @@
 	</div>
 
 	<div id="divMenu">
-		Inicio
+		<a href="#">Inicio</a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="letraNegra">|</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		Buscar
+		<a href="#">Buscar</a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="letraNegra">|</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		Afiches
+		<a href="#">Afiches</a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="letraNegra">|</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		Contacto
+		<a href="#">Contacto</a>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="letraNegra">|</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		Acerca de
+		<a href="#">Acerca de</a>
 	</div>
 
 	<div id="divContenido">
-		{% block content %}{% endblock %}
+		<div id="divTitulo"><h2>{% block titulo %}Titulo{% endblock %}</h2></div>
+		{% block contenido %}{% endblock %}
 	</div>
 
 	<div id="divPie">
-		Copyright &copy; 2013 Entretenimiento Unido S.A. | Política de Privacidad
+		Copyright &copy; 2013 Entretenimiento Unido S.A. | Pol&iacute;tica de Privacidad
 	</div>
 
 </div>

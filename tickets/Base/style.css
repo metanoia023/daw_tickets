@@ -18,6 +18,18 @@ h1 {
 	font-style: italic;
 }
 
+h2 {
+	font-size: 30px;
+}
+
+a, a:active, a:hover, a:visited {
+	color: white;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
 .letraNegra {
 	color: black;
 }
@@ -41,15 +53,22 @@ h1 {
 
 #divContenido {
 	padding: 20px;
-	padding-bottom: 50px;   /* Altura del pie con el padding, más 10 px para que no toque el pie */
+	padding-bottom: 50px;   /* Altura del pie con el padding, mas 10 px para que no toque el pie */
 	background: rgb(212, 225, 245);
+}
+
+#divTitulo {
+	/*border: 1px solid black;*/
+	position: relative;
+	left: -100px;
+	padding: 20px;
 }
 
 #divPie {
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	height: 20px;   /* Altura del pie; la altura real es esta más el padding */
+	height: 20px;   /* Altura del pie; la altura real es esta mas el padding */
 	background: rgb(40, 107, 204);
 	padding: 10px 0px;
 	text-align: center;

@@ -5,7 +5,7 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns(
-                     
+    '',
     url(r'^$', 'tickets.views.index'),
     #Incluyo urls para procesar url de los modelos.
 '''    url(r'^lugar/', include('tickets.Lugar.urls')),
