@@ -1,1 +1,60 @@
 @CHARSET "ISO-8859-1";
+
+* {
+	margin: 0px;
+	padding: 0px;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	font-size: 16px;
+}
+
+html,
+body {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+}
+h1 {
+	font-size: 40px;
+	font-style: italic;
+}
+
+.letraNegra {
+	color: black;
+}
+
+#divGeneral {
+	min-height: 100%;
+	position: relative;
+}
+
+#divSuperior {
+	background: rgb(212, 225, 245);
+	padding: 10px;
+}
+
+#divMenu {
+	background: rgb(40, 107, 204);
+	padding: 10px;
+	text-align: center;
+	color: white;
+}
+
+#divContenido {
+	padding: 20px;
+	padding-bottom: 50px;   /* Altura del pie con el padding, más 10 px para que no toque el pie */
+	background: rgb(212, 225, 245);
+}
+
+#divPie {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	height: 20px;   /* Altura del pie; la altura real es esta más el padding */
+	background: rgb(40, 107, 204);
+	padding: 10px 0px;
+	text-align: center;
+	color: white;
+	font-size: 12px;
+}
+
+

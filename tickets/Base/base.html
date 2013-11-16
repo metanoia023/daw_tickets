@@ -1,22 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+
+<html>
 <head>
-<link rel="stylesheet" href="style.css" />
-<title>{% block title %}Direct Mobile Billing App{% endblock %}</title>
+<title>Entretenimiento Unido{% block title %}{% endblock %}</title>
+<link href='estilos.css' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
-{% block header %}
-<div align="center"><h1>Sitio de Espectáculos online</h1></div>
-{% endblock %}
-{% block body %}
+<div id="divGeneral">
 
-{% block nav %}
-<div align="center">{% include "tickets/Base/nav.html" %}</div>
-{% endblock %}
-{% block content %}{% endblock %}
-{% endblock %}
-{% block footer %}
-<div align="center"><h1>Footer App</h1></div>
-{% endblock %}
+	<div id="divSuperior">
+	<h1>Entretenimiento Unido</h1>
+	<h5>Tickets para todos los espect&aacute;culos en un solo lugar</h5>
+	</div>
+
+	<div id="divMenu">
+		Inicio
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="letraNegra">|</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Buscar
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="letraNegra">|</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Afiches
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="letraNegra">|</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Contacto
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="letraNegra">|</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Acerca de
+	</div>
+
+	<div id="divContenido">
+		{% block content %}{% endblock %}
+	</div>
+
+	<div id="divPie">
+		Copyright &copy; 2013 Entretenimiento Unido S.A. | Política de Privacidad
+	</div>
+
+</div>
 </body>
 </html>
