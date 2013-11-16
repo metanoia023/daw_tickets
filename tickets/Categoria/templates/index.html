@@ -1,1 +1,8 @@
-<a href="/espectaculo/">Musica</a> <a href="#">Teatro</a>
+
+
+{% for C in categorias %}
+
+<div><a href="/categoria/{{C.nombre}}/">{{C.nombre}}
+</a>{{C.descripcion}}</div>
+
+{% endfor %}
