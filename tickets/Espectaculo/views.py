@@ -10,6 +10,11 @@ def info(request, id):
     espectaculos = Espectaculo.objects.all()   
     return render_to_response('tickets/Espectaculo/templates/index.html', {'espectaculos':espectaculos})
 
+def detalle(request, id):
+    from tickets.espectaculo import Espectaculo
+    espectaculos = Espectaculo.objects.all()   
+    return render_to_response('tickets/Espectaculo/templates/detalle.html', {'espectaculos':espectaculos})
+
 
 def busqueda(request, id): 
     from django.shortcuts import render_to_response

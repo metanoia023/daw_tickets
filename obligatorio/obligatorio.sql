@@ -1,1 +1,1 @@
-`tickets_usuario`
+DROP TABLE
