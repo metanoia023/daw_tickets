@@ -1,21 +1,12 @@
 {% extends "tickets/Base/base.html" %}
-{% block title %} - Listado de Espect&aacute;culos{% endblock %}
-{% block titulo %}Listado de Espect&aacute;culos{% endblock %}
+{% block title %} - Listado de Espect&aacute;culos por categor&iacute;a{% endblock %}
+{% block titulo %}Listado de Espect&aacute;culos por categor&iacute;a{% endblock %}
 
 {% block estilos %}
-table td {padding: 3px;}
 {% endblock %}
 
 {% block contenido %}
 
-<form id="form1" name="form1" method="post" action="">
-{% csrf_token %} 
-
-Buscar: &nbsp;&nbsp;&nbsp;<input  type="text"  name="buscar"  id="buscar"  value="{%  if  busqueda  !=  None  %} 
-{{busqueda}} {% endif %}" />
-<input type="submit" value= "  Buscar  "/>
-<br />
-<br />
 <table border="0" align="center" cellspacing="1">
 <tr>
 <td width="17%"><strong>Nombre</strong></td>
@@ -37,4 +28,6 @@ Buscar: &nbsp;&nbsp;&nbsp;<input  type="text"  name="buscar"  id="buscar"  value
 <tr><td colspan="3" bgcolor="#FF0000" style="color:#FFF">No existen espect&aacute;culos</td></tr>
 {% endfor %}
 </table>
+
+
 {% endblock %}
