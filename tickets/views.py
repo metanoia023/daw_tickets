@@ -12,3 +12,4 @@ def index(request):
     return  render_to_response('tickets/Categoria/templates/index.html',{'categorias':categorias}, context_instance = RequestContext(request))
     #el return siempre tiene que devolver render to response
     #devuelve lo que tiene en template index
+    
