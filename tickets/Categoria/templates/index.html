@@ -1,8 +1,12 @@
+{% extends "tickets/Base/base.html" %}
+{% block title %} - Listado de Categor&iacute;as{% endblock %}
+{% block titulo %}Listado de Categor&iacute;as{% endblock %}
 
-
+{% block contenido %}
 {% for C in categorias %}
 
-<div><p><a href="/categoria/{{C.nombre}}/"></p>{{C.nombre}}
-</a><p>{{C.descripcion}}</p></div>
+<div><a href="/categoria/{{C.nombre}}/">{{C.nombre}}
+</a> - {{C.descripcion}}</div>
 
 {% endfor %}
+{% endblock %}

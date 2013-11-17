@@ -1,0 +1,19 @@
+{% extends "tickets/Base/base.html" %}
+{% block title %} - Listado de Espectáculos{% endblock %}
+{% block header %}
+{{ block.super }}
+{% block titulo %}{{E.nombre}} - Entretenimiento Unido{% endblock %}
+
+<div align="center"><h1>Show de {{E.nombre}}</h1>
+{% endblock %}
+
+{% block contenido %}
+<div>
+<p>Aqui se muestra  el detalle  del  evento</p>
+<p>Dias restantes para el inicio: 
+<p>Cantidad  de  entradas  vendidas: </p> 
+<p>Entradas restantes: </p>
+
+<span class = rojo></span>
+</div>
+{% endblock %}

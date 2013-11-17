@@ -3,7 +3,27 @@
 <html>
 <head>
 <title>Entretenimiento Unido{% block title %}{% endblock %}</title>
-<link href='estilos.css' rel='stylesheet' type='text/css'>
+
+<link href='style.css' rel='stylesheet' type='text/css'>
+<style type="text/css">
+* {margin: 0px; padding: 0px; font-size: 16px;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; }
+html, body { margin: 0px; padding: 0px; height: 100%; }
+h1 { font-size: 40px; font-style: italic; }
+h2 { font-size: 30px; }
+a, a:active, a:hover, a:visited { color: white; text-decoration: none; }
+a:hover { text-decoration: undeline; }
+.letraNegra { color: black; }
+#divGeneral { min-height: 100%; position: relative; background: rgb(212, 225, 245); /*border: 1px solid red;*/ }
+#divSuperior { /*background: rgb(212, 225, 245)*/; padding: 10px; }
+#divMenu { background: rgb(40, 107, 204); padding: 10px; text-align: center; color: white; }
+#divContenido { padding: 20px 220px; padding-bottom: 50px; /*background: rgb(212, 225, 245);*/ /*border: 1px solid red;*/ }
+#divTitulo { position: relative; left: -100px; padding: 20px; }
+#divPie { position: absolute; bottom: 0px; width: 100%; height: 20px; background: rgb(40, 107, 204);
+		  padding: 10px 0px; text-align: center; color: white; font-size: 12px; }
+{% block estilos %}{% endblock %}
+</style>
+
 
 </head>
 <body>
