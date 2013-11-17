@@ -3,6 +3,14 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
+
+
+def info(request, id):
+    from tickets.espectaculo import Espectaculo
+    espectaculos = Espectaculo.objects.all()   
+    return render_to_response('tickets/Espectaculo/templates/index.html', {'espectaculos':espectaculos})
+
+
 def busqueda(request, id): 
     from django.shortcuts import render_to_response
     from tickets.espectaculo import Espectaculo

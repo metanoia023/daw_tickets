@@ -15,7 +15,7 @@ urlpatterns = patterns(
 	url(r'^precio/', include('tickets.Precio.urls')),
 	url(r'^ticket/', include('tickets.Ticket.urls')),
 	url(r'^usuario/', include('tickets.Usuario.urls')),
-    url(r'^categoria/Musica', include('tickets.Categoria.urls', 'tickets.Categoria.url')),
+    #url(r'^categoria/Musica', include('tickets.Categoria.urls', 'tickets.Categoria.url')),
     # Examples:
     # url(r'^$', 'obligatorio.views.home', name='home'),
     # url(r'^obligatorio/', include('obligatorio.foo.urls')),
