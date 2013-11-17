@@ -1,31 +1,45 @@
 {% extends "tickets/Base/base.html" %}
-{% block title %} - Listado de Espectaculos{% endblock %}
-{% block header %}
-{{ block.super }}
-{% block titulo %}{{E.nombre}} - Entretenimiento Unido{% endblock %}
+{% block title %} - Detalle de Espect&aacute;culo{% endblock %}
+{% block titulo %}Detalle del show{% endblock %}
 
-<div align="center"><h1>Show de {{E.nombre}}</h1>
+{% block estilos %}
+#dispBaja {background: #C00; font-weight: bold;}
+#dispMedia {background: #F60; font-weight: bold;}
+#dispAlta {background: #093; font-weight: bold;}
+#agotadas {color:#900; font-weight: bold;}
+#finalizado {color:#069; font-weight: bold;}
 {% endblock %}
 
 {% block contenido %}
-<div>
+
+<strong>
+{% for E in espectaculos %}
+Id: {{E.id}}<br/>
+Nombre: {{E.nombre}}<br/>
+Descripci&oacute;n: {{E.descripcion}}<br/>
+Lugar: {{E.lugar.nombre}}<br/>
+Fecha y hora: {{E.hora}}<br/>
+{% empty %}
+No existe el espect&aacute;culo<br/>
+{% endfor %}
+<br/>
+</strong>
+
 <p>Aqui se muestra  el detalle  del  evento</p>
 <p>Dias restantes para el inicio: 
 <p>Cantidad  de  entradas  vendidas: </p> 
 <p>Entradas restantes: </p>
+<br/>
 
-
-<span style="background-color:#C00"><strong> Disponibilidad BAJA</strong></span>
+<span id="dispBaja">Disponibilidad BAJA</span>
 <br />
-<span style="background-color:#F60"><strong> Disponibilidad MEDIA</strong></span>
+<span id="dispMedia">Disponibilidad MEDIA</span>
 <br />
-<span style="background-coloR:#093"><strong> Disponibilidad ALTA</strong></span>
+<span id="dispAlta">Disponibilidad ALTA</span>
 <br />
-
-<span style="color:#900"><strong>***Entradas agotadas***</strong></span>
 <br />
-<span style="color:#069"><strong>***Evento finalizado***</strong></span>
-
-
+<span id="agotadas">***Entradas agotadas***</span>
+<br />
+<span id="finalizado">*** Evento finalizado ***</span>
 
 {% endblock %}

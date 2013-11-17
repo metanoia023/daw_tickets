@@ -1,35 +1,35 @@
 {% extends "tickets/Base/base.html" %}
-{% block title %} - Listado de Espectaculos{% endblock %}
-{% block header %}
-{{ block.super }}
-{% block titulo %}{{C.nombre}} Espectaculos de {{C.nombre}}{% endblock %}
+{% block title %} - Listado de Espect&aacute;culos{% endblock %}
+{% block titulo %}Listado de Espect&aacute;culos{% endblock %}
 
-<div align="center"><h1>Espectaculos de {{C.nombre}}</h1>
+{% block estilos %}
+table td {padding: 3px;}
 {% endblock %}
 
 {% block contenido %}
+
 <form id="form1" name="form1" method="post" action="">
 {% csrf_token %} 
 
-
-Buscar:<input  type="text"  name="buscar"  id="buscar"  value="{%  if  busqueda  !=  None  %} 
+Buscar: &nbsp;&nbsp;&nbsp;<input  type="text"  name="buscar"  id="buscar"  value="{%  if  busqueda  !=  None  %} 
 {{busqueda}} {% endif %}" />
-<input type="submit" value= "Buscar"/>
+<input type="submit" value= "  Buscar  "/>
 <br />
-<table width="83%" border="0" align="center">
+<br />
+<table border="0" align="center" cellspacing="1">
 <tr>
-<td width="19%"><strong>Nombre</strong></td>
-<td width="29%"><strong>Descripcion</strong></td>
+<td width="17%"><strong>Nombre</strong></td>
+<td width="28%"><strong>Descripci&oacute;n</strong></td>
 <td width="25%"><strong>Lugar</strong></td>
-<td width="15%"><strong>Fecha y hora</strong></td>
-<td width="12%"><strong>Detalle</strong></td>
+<td width="20%"><strong>Fecha y hora</strong></td>
+<td width="10%"><strong>Detalle</strong></td>
 </tr>
 {% for E in espectaculos %}
-<tr bgcolor="{% cycle '#CCCCCC' '#FFFFFF' %}">
-<td>{{P.nombre}}</td>
-<td>{{P.descripcion}}</td>
-<td>{{P.lugar}}</td>
-<td>{{P.fechaHora}}</td>
+<tr bgcolor="{% cycle '#CCCCCC' '#DDDDDD' %}">
+<td>{{E.nombre}}</td>
+<td>{{E.descripcion}}</td>
+<td>{{E.lugar.nombre}}</td>
+<td>{{E.hora|date:"d/m/Y H:i"}}</td>
 <td><a href="/espectaculo/{{E.id}}/">+ Ampliar</a></td>
 
 </tr>

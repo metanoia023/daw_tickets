@@ -29,7 +29,7 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-UY'
 
 SITE_ID = 1
 
@@ -104,7 +104,7 @@ ROOT_URLCONF = 'obligatorio.urls'
 WSGI_APPLICATION = 'obligatorio.wsgi.application'
 
 TEMPLATE_DIRS = (
-	'C:/obligatorio'
+	'C:/obligatorio/daw_tickets'
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
