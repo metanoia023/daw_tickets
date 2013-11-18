@@ -1,30 +1,49 @@
 {% extends "tickets/Base/base.html" %}
-{% block title %} - Listado de Espectaculos{% endblock %}
-{% block header %}
-{{ block.super }}
-{% block titulo %}{{E.nombre}} - Entretenimiento Unido{% endblock %}
+{% block title %} - Detalle de Espect&aacute;culo{% endblock %}
+{% block titulo %}Detalle del show{% endblock %}
 
-<div align="center"><h1>Show de {{E.nombre}}</h1>
+{% block estilos %}
+table td {padding: 1px;}
+table td a:hover {text-decoration: none;}
+#divArtista {border: 1px solid black;}
+#botonVerMas {background: rgb(40, 107, 204); width: 30px;}
+.nombreEspectaculo {font-size: 20px; font-weight: bold;}
+#dispBaja {background: #C00; font-weight: bold;}
+#dispMedia {background: #F60; font-weight: bold;}
+#dispAlta {background: #093; font-weight: bold;}
+#agotadas {color:#900; font-weight: bold;}
+#finalizado {color:#069; font-weight: bold;}
 {% endblock %}
 
 {% block contenido %}
-<div>
-<p>Aqui se muestra  el detalle  del  evento</p>
-<p>Dias restantes para el inicio: 
-<p>Cantidad  de  entradas  vendidas: </p> 
-<p>Entradas restantes: </p>
 
+{% for E in espectaculos %}
+<table border="1" width="100%" cellspacing="0">
+<tr><td rowspan="4" width="180" height="180">(foto)</td><td colspan="2" class="nombreEspectaculo">{{E.nombre}}</td></tr>
+<tr><td colspan="2">Nombre de la gira</td></tr>
+<tr><td colspan="2">{{E.hora}} - {{E.lugar.nombre}}</td></tr>
+<tr><td colspan="2" height="100%">{{E.descripcion}}</td></tr>
+<tr><td colspan="2" rowspan="2">
+	Dias restantes para el inicio: 
+	<br />Cantidad  de  entradas  vendidas:  
+	<br />Entradas restantes: 
+	<br />
+	<span id="dispBaja">Disponibilidad BAJA</span><br />
+	<span id="dispMedia">Disponibilidad MEDIA</span><br />
+	<span id="dispAlta">Disponibilidad ALTA</span><br />
+	<br />
+	<span id="agotadas">***Entradas agotadas***</span><br />
+	<span id="finalizado">*** Evento finalizado ***</span>
+	</td>
+    <td align="right" id="botonVerMas"><a href="/compra/{{E.id}}/">Comprar</a></td></tr>
+</table>
 
-<span style="background-color:#C00"><strong> Disponibilidad BAJA</strong></span>
-<br />
-<span style="background-color:#F60"><strong> Disponibilidad MEDIA</strong></span>
-<br />
-<span style="background-coloR:#093"><strong> Disponibilidad ALTA</strong></span>
-<br />
+{% empty %}
+No existe el espect&aacute;culo<br/>
+{% endfor %}
+<br/>
 
-<span style="color:#900"><strong>***Entradas agotadas***</strong></span>
-<br />
-<span style="color:#069"><strong>***Evento finalizado***</strong></span>
+<br/>
 
 
 

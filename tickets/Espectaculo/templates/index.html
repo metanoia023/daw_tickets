@@ -1,40 +1,42 @@
 {% extends "tickets/Base/base.html" %}
-{% block title %} - Listado de Espectaculos{% endblock %}
-{% block header %}
-{{ block.super }}
-{% block titulo %}{{C.nombre}} Espectaculos de {{C.nombre}}{% endblock %}
+{% block title %} - Listado de Espect&aacute;culos{% endblock %}
+{% block titulo %}Listado de Espect&aacute;culos{% endblock %}
 
-<div align="center"><h1>Espectaculos de {{C.nombre}}</h1>
+{% block estilos %}
+table td {padding: 1px;}
+table td a:hover {text-decoration: none;}
+#divArtista {border: 1px solid black;}
+#botonVerMas {background: rgb(40, 107, 204); width: 30px;}
+.nombreEspectaculo {font-size: 20px; font-weight: bold;}
 {% endblock %}
 
 {% block contenido %}
+
 <form id="form1" name="form1" method="post" action="">
 {% csrf_token %} 
 
-
-Buscar:<input  type="text"  name="buscar"  id="buscar"  value="{%  if  busqueda  !=  None  %} 
+Buscar: &nbsp;&nbsp;&nbsp;<input  type="text"  name="buscar"  id="buscar"  value="{%  if  busqueda  !=  None  %} 
 {{busqueda}} {% endif %}" />
-<input type="submit" value= "Buscar"/>
+<input type="submit" value= "  Buscar  "/>
 <br />
-<table width="83%" border="0" align="center">
-<tr>
-<td width="19%"><strong>Nombre</strong></td>
-<td width="29%"><strong>Descripcion</strong></td>
-<td width="25%"><strong>Lugar</strong></td>
-<td width="15%"><strong>Fecha y hora</strong></td>
-<td width="12%"><strong>Detalle</strong></td>
-</tr>
+<br />
+
+
 {% for E in espectaculos %}
-<tr bgcolor="{% cycle '#CCCCCC' '#FFFFFF' %}">
-<td>{{P.nombre}}</td>
-<td>{{P.descripcion}}</td>
-<td>{{P.lugar}}</td>
-<td>{{P.fechaHora}}</td>
-<td><a href="/espectaculo/{{E.id}}/">+ Ampliar</a></td>
+<table border="0" width="100%" cellspacing="0">
+<tr><td rowspan="3" width="80" height="80">(foto)</td><td colspan="2" class="nombreEspectaculo">{{E.nombre}}</td></tr>
+<tr><td colspan="2">{{E.descripcion}}</td></tr>
+<tr><td>{{E.hora|date:"d \d\e M \d\e Y, H:i\h"}} - {{E.lugar.nombre}}</td>
+    <td align="right" id="botonVerMas"><a href="/espectaculo/{{E.id}}/">&nbsp;+&nbsp;Ampliar&nbsp;</a></td></tr>
+<tr><td colspan="3" height="15" vertical-align="bottom"><hr width="100%" color="black"></td></tr>
+</table>
+
+
+
 
 </tr>
 {% empty %}
-<tr><td colspan="3" bgcolor="#FF0000" style="color:#FFF">No existen espectaculos</td></tr>
+<tr><td colspan="3" bgcolor="#FF0000" style="color:#FFF">No existen espect&aacute;culos</td></tr>
 {% endfor %}
 </table>
 {% endblock %}
