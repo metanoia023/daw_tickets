@@ -1,6 +1,7 @@
 @CHARSET "ISO-8859-1";
 
-* {margin: 0px; padding: 0px; font-size: 16px;
+
+ {margin: 0px; padding: 0px; font-size: 16px;
 	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; }
 html, body { margin: 0px; padding: 0px; height: 100%; background: rgb(212, 225, 245); }
 h1 { font-size: 40px; font-style: italic; }
@@ -19,4 +20,4 @@ table td {padding: 1px;}
 table td a:hover {text-decoration: none;}
 #divArtista {border: 1px solid black;}
 #botonVerMas {background: rgb(40, 107, 204); width: 30px;}
-.nombreEspectaculo {font-size: 20px; font-weight: bold;}
+.nombreEspectaculo {font-size: 20px; font-weight: bold;} */
