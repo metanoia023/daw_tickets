@@ -3,7 +3,11 @@
 {% block titulo %}Listado de Espect&aacute;culos{% endblock %}
 
 {% block estilos %}
-table td {padding: 3px;}
+table td {padding: 1px;}
+table td a:hover {text-decoration: none;}
+#divArtista {border: 1px solid black;}
+#botonVerMas {background: rgb(40, 107, 204); width: 30px;}
+.nombreEspectaculo {font-size: 20px; font-weight: bold;}
 {% endblock %}
 
 {% block contenido %}
@@ -16,21 +20,19 @@ Buscar: &nbsp;&nbsp;&nbsp;<input  type="text"  name="buscar"  id="buscar"  value
 <input type="submit" value= "  Buscar  "/>
 <br />
 <br />
-<table border="0" align="center" cellspacing="1">
-<tr>
-<td width="17%"><strong>Nombre</strong></td>
-<td width="28%"><strong>Descripci&oacute;n</strong></td>
-<td width="25%"><strong>Lugar</strong></td>
-<td width="20%"><strong>Fecha y hora</strong></td>
-<td width="10%"><strong>Detalle</strong></td>
-</tr>
+
+
 {% for E in espectaculos %}
-<tr bgcolor="{% cycle '#CCCCCC' '#DDDDDD' %}">
-<td>{{E.nombre}}</td>
-<td>{{E.descripcion}}</td>
-<td>{{E.lugar.nombre}}</td>
-<td>{{E.hora|date:"d/m/Y H:i"}}</td>
-<td><a href="/espectaculo/{{E.id}}/">+ Ampliar</a></td>
+<table border="0" width="100%" cellspacing="0">
+<tr><td rowspan="3" width="80" height="80">(foto)</td><td colspan="2" class="nombreEspectaculo">{{E.nombre}}</td></tr>
+<tr><td colspan="2">{{E.descripcion}}</td></tr>
+<tr><td>{{E.hora|date:"d \d\e M \d\e Y, H:i\h"}} - {{E.lugar.nombre}}</td>
+    <td align="right" id="botonVerMas"><a href="/espectaculo/{{E.id}}/">&nbsp;+&nbsp;Ampliar&nbsp;</a></td></tr>
+<tr><td colspan="3" height="15" vertical-align="bottom"><hr width="100%" color="black"></td></tr>
+</table>
+
+
+
 
 </tr>
 {% empty %}
