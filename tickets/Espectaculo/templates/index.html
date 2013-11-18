@@ -13,11 +13,11 @@ table td a:hover {text-decoration: none;}
 {% block contenido %}
 
 <form id="form1" name="form1" method="post" action="">
-{% csrf_token %} 
+{% csrf_token %}
 
-Buscar: &nbsp;&nbsp;&nbsp;<input  type="text"  name="buscar"  id="buscar"  value="{%  if  busqueda  !=  None  %} 
+Buscar: &nbsp;&nbsp;&nbsp;<input type="text" name="buscar" id="buscar" value="{% if busqueda != None %}
 {{busqueda}} {% endif %}" />
-<input type="submit" value= "  Buscar  "/>
+<input type="submit" value= " Buscar "/>
 <br />
 <br />
 

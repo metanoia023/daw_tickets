@@ -11,8 +11,8 @@ table td a:hover {text-decoration: none;}
 #dispBaja {background: #C00; font-weight: bold;}
 #dispMedia {background: #F60; font-weight: bold;}
 #dispAlta {background: #093; font-weight: bold;}
-#agotadas {color:#900; font-weight: bold;}
-#finalizado {color:#069; font-weight: bold;}
+#agotadas {background:#585858; font-weight: bold;}
+#finalizado {background:#0040FF; font-weight: bold;}
 {% endblock %}
 
 {% block contenido %}
@@ -24,17 +24,17 @@ table td a:hover {text-decoration: none;}
 <tr><td colspan="2">{{E.hora}} - {{E.lugar.nombre}}</td></tr>
 <tr><td colspan="2" height="100%">{{E.descripcion}}</td></tr>
 <tr><td colspan="2" rowspan="2">
-	Dias restantes para el inicio: 
-	<br />Cantidad  de  entradas  vendidas:  
-	<br />Entradas restantes: 
-	<br />
-	<span id="dispBaja">Disponibilidad BAJA</span><br />
-	<span id="dispMedia">Disponibilidad MEDIA</span><br />
-	<span id="dispAlta">Disponibilidad ALTA</span><br />
-	<br />
-	<span id="agotadas">***Entradas agotadas***</span><br />
-	<span id="finalizado">*** Evento finalizado ***</span>
-	</td>
+        Dias restantes para el inicio:
+        <br />Cantidad de entradas vendidas:
+        <br />Entradas restantes:
+        <br />
+        <span id="dispBaja">Disponibilidad BAJA</span><br />
+        <span id="dispMedia">Disponibilidad MEDIA</span><br />
+        <span id="dispAlta">Disponibilidad ALTA</span><br />
+        <br />
+        <span id="agotadas">***Entradas agotadas***</span><br />
+        <span id="finalizado">*** Evento finalizado ***</span>
+        </td>
     <td align="right" id="botonVerMas"><a href="/compra/{{E.id}}/">Comprar</a></td></tr>
 </table>
 
