@@ -31,3 +31,9 @@ table td a:hover {text-decoration: none;}
 #dispAlta {background: #093; font-weight: bold;}
 #agotadas {background:#585858; font-weight: bold;}
 #finalizado {background:#0040FF; font-weight: bold;
+table td {padding: 1px;}
+table td a:hover {text-decoration: none;}
+#divArtista {border: 1px solid black;}
+#botonVerMas {background: rgb(40, 107, 204); width: 30px;}
+.nombreEspectaculo {font-size: 20px; font-weight: bold;}
+.error{background-color:#C00; color:#FFF}

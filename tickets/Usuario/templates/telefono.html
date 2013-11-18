@@ -1,21 +1,12 @@
-{% extends template_base %}
-{% block title %}Ingreso de Telefono{% endblock %}
-{% block header %}
-{{ block.super }}
-<div align="center"><h1>Ingreso de Telefono</h1>
-{% endblock %}
-{% block nav %}
-{% endblock %}
-{% block content %}
-<form id="form1" name="form1" method="post" action="">
-{% csrf_token %} 
-{% if form.non_field_errors %}
-{% for error in form.non_field_errors %}
-<p style="background-color:#F00; color:#FFF"> {{error}} </p>
+{% extends "tickets/Base/base.html" %}
+{% block title %} - Listado de Categor&iacute;as{% endblock %}
+{% block titulo %}Listado de Categor&iacute;as{% endblock %}
+
+{% block contenido %}
+{% for C in categorias %}
+
+<div><a href="/categoria/{{C.id}}/{{C.nombre}}/">{{C.nombre}}
+</a> - {{C.descripcion}}</div>
+
 {% endfor %}
-{% endif %}
-Ingrese Telefono: <input name="telefono" type="text" id="telefono" 
-value="{{form.telefono.value}}" /> <input type="submit" name="button" id="button" 
-value="Continuar" />
-</form> 
 {% endblock %}

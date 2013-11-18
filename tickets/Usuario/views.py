@@ -1,4 +1,12 @@
+
+from obligatorio import settings
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+
+def index(request):
+    from tickets.usuario import Usuario  
+    return render_to_response('tickets/Usuario/templates/telefono.html')
 
 def solicitarTelefono(request):
 #Si el formulario fue enviado (submit)
@@ -21,3 +29,7 @@ def solicitarTelefono(request):
         form = TelForm()
 #envio la instancia formulario hacia el HTML.
 return render_to_response('{0}/Usuario/templates/telefono.html'.format(settings.INSTALLED_APPS[6]), {'form': form, 'msg':msg}, context_instance = RequestContext(request)) 
+
+
+# aca empiezo a probar estoy con Gabriela
+
