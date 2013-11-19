@@ -2,18 +2,6 @@
 {% block title %} - Detalle de Espect&aacute;culo{% endblock %}
 {% block titulo %}Detalle del show{% endblock %}
 
-{% block estilos %}
-<!--table td {padding: 1px;}
-table td a:hover {text-decoration: none;}
-#divArtista {border: 1px solid black;}
-#botonVerMas {background: rgb(40, 107, 204); width: 30px;}
-.nombreEspectaculo {font-size: 20px; font-weight: bold;}
-#dispBaja {background: #C00; font-weight: bold;}
-#dispMedia {background: #F60; font-weight: bold;}
-#dispAlta {background: #093; font-weight: bold;}
-#agotadas {background:#585858; font-weight: bold;}
-#finalizado {background:#0040FF; font-weight: bold;}-->
-{% endblock %}
 
 {% block contenido %}
 
@@ -24,16 +12,40 @@ table td a:hover {text-decoration: none;}
 <tr><td colspan="2">{{E.hora}} - {{E.lugar.nombre}}</td></tr>
 <tr><td colspan="2" height="100%">{{E.descripcion}}</td></tr>
 <tr><td colspan="2" rowspan="2">
-        Dias restantes para el inicio:
-        <br />Cantidad de entradas vendidas:
-        <br />Entradas restantes:
+        D&iacute;as restantes para el inicio: {{dias}}
+        <br />Cantidad de entradas vendidas: {{ticketsVendidos}}
         <br />
+
+        {% for P in precios %}
+        <br>{{P.sector.nombre}} - $U {{P.precio}}
+        {% empty %}
+			No hay sectores definidos<br/>
+		{% endfor %}
+        <br />
+        
+        <br />Entradas restantes: {{ ticketsDisponibles }}
+        <br />Disponibilidad: {{ disponibilidad }}  (despues eliminar)
+        <br />
+        {% if disponibilidad <= 10 %}
         <span id="dispBaja">Disponibilidad BAJA</span><br />
+        {% endif %}
+        {% if disponibilidad < 50  and  disponibilidad > 10 %}
         <span id="dispMedia">Disponibilidad MEDIA</span><br />
+        {% endif %}
+        {% if disponibilidad >= 50 %}
         <span id="dispAlta">Disponibilidad ALTA</span><br />
+        {% endif %}
+
+
         <br />
+        {% if ticketsDisponibles == 0 %}
         <span id="agotadas">***Entradas agotadas***</span><br />
+        {% endif %}
+        
+        {% if now > E.hora %}
         <span id="finalizado">*** Evento finalizado ***</span>
+        {% endif %}
+
         </td>
     <td align="right" id="botonVerMas"><a href="/compra/{{E.id}}/">Comprar</a></td></tr>
 </table>
