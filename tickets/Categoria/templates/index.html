@@ -3,6 +3,16 @@
 {% block titulo %}Listado de Categor&iacute;as{% endblock %}
 
 {% block contenido %}
+
+<form id="form1" name="form1" method="post" action="">
+{% csrf_token %}
+
+Buscar: &nbsp;&nbsp;&nbsp;<input type="text" name="buscar" id="buscar" value="{% if busqueda != None %}
+{{busqueda}} {% endif %}" />
+<input type="submit" value= " Buscar "/>
+</form>
+
+
 {% for C in categorias %}
 
 <div><a href="/categoria/{{C.id}}/{{C.nombre}}/">{{C.nombre}}
