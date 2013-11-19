@@ -1,5 +1,7 @@
 # Django settings for obligatorio project.
 
+import django.conf.global_settings as DEFAULT_SETTINGS
+
 import os
 
 PROJECT_DIR = os.path.dirname(__file__)
@@ -15,15 +17,16 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-		
+                
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'obligatorio',                      # Or path to database file if using sqlite3.
-        'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '127.0.0.1',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'NAME': 'obligatorio', # Or path to database file if using sqlite3.
+        'USER': 'root', # Not used with sqlite3.
+        'PASSWORD': '', # Not used with sqlite3.
+        'HOST': '127.0.0.1', # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '', # Set to empty string for default. Not used with sqlite3.
     }
 }
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -90,7 +93,7 @@ SECRET_KEY = 't-y7fqo29ro2yev_#z9p#8y!0hqbq5)u(tl))pu-v&amp;1vl&amp;o729'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+# 'django.template.loaders.eggs.Loader',
 )
 
 
@@ -110,11 +113,13 @@ ROOT_URLCONF = 'obligatorio.urls'
 WSGI_APPLICATION = 'obligatorio.wsgi.application'
 
 TEMPLATE_DIRS = (
-	'C:/obligatorio/daw_tickets' # ESTO NO LO TOCO
+        'C:/obligatorio/daw_tickets' # ESTO NO LO TOCO
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
+
+PLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -123,7 +128,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'tickets',
+        'tickets',
      'django.contrib.staticfiles'
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
