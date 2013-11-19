@@ -61,14 +61,14 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = 'C:/obligatorio/tickets/static/'
+STATIC_ROOT = 'C:/obligatorio/daw_tickets/tickets/static/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
 # Additional locations of static files
-STATICFILES_DIRS = (os.path.join("tickets/static/css/style.css", "static"),
+STATICFILES_DIRS = (os.path.join("daw_tickets/tickets/static/css/style.css", "static"),
    
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
@@ -109,7 +109,7 @@ ROOT_URLCONF = 'obligatorio.urls'
 WSGI_APPLICATION = 'obligatorio.wsgi.application'
 
 TEMPLATE_DIRS = (
-	'C:/obligatorio' # ESTO NO LO TOCO
+	'C:/obligatorio/daw_tickets' # ESTO NO LO TOCO
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
