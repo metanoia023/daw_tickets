@@ -31,4 +31,6 @@ table td a:hover {text-decoration: none;}
 #dispMedia {background: #F60; font-weight: bold;}
 #dispAlta {background: #093; font-weight: bold;}
 #agotadas {background:#585858; font-weight: bold;}
-#finalizado {background:#0040FF; font-weight: bold;
+#finalizado {background:#0040FF; font-weight: bold;}
+.error{color:#F03; text-height:bold}
+.margen{margin-top:20px; padding:2px auto}
