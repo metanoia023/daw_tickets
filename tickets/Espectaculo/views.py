@@ -3,8 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-from datetime import datetime, timedelta
-
+from django.utils import timezone
 
 def index(request):
     from tickets.espectaculo import Espectaculo
@@ -35,7 +34,7 @@ def detalle(request, id):
         #now  = datetime.now
         #dif = unEspectaculo.hora - now
         #dias = dif.days
-        now = datetime.now()
+        now = timezone.now()
         dias = (unEspectaculo.hora - now).days
         
         
