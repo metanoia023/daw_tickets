@@ -1,11 +1,15 @@
 # Django settings for obligatorio project.
 
+import django.conf.global_settings as DEFAULT_SETTINGS
+
 import os
 
 PROJECT_DIR = os.path.dirname(__file__)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+INTERNAL_IPS = ('127.0.0.1')
 
 ADMINS = (
     #('Mery', 'metanoia023@gmail.com'),
@@ -15,15 +19,16 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-		
+                
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'obligatorio',                      # Or path to database file if using sqlite3.
-        'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '127.0.0.1',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'NAME': 'obligatorio', # Or path to database file if using sqlite3.
+        'USER': 'root', # Not used with sqlite3.
+        'PASSWORD': '', # Not used with sqlite3.
+        'HOST': '127.0.0.1', # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '', # Set to empty string for default. Not used with sqlite3.
     }
 }
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -90,16 +95,16 @@ SECRET_KEY = 't-y7fqo29ro2yev_#z9p#8y!0hqbq5)u(tl))pu-v&amp;1vl&amp;o729'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+# 'django.template.loaders.eggs.Loader',
 )
 
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware'
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -110,10 +115,19 @@ ROOT_URLCONF = 'obligatorio.urls'
 WSGI_APPLICATION = 'obligatorio.wsgi.application'
 
 TEMPLATE_DIRS = (
-	'C:/obligatorio/daw_tickets' # ESTO NO LO TOCO
+        'C:/obligatorio/daw_tickets' # ESTO NO LO TOCO
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    #'django.core.context_processors.auth',
+    'django.core.context_processors.csrf',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
 )
 
 INSTALLED_APPS = (
@@ -123,7 +137,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'tickets',
+        'tickets',
      'django.contrib.staticfiles'
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',

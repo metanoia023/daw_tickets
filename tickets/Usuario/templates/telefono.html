@@ -1,17 +1,21 @@
 {% extends "tickets/Base/base.html" %}
 {% block title %}Ingreso de Tel&eacute;fono{% endblock %}
-{% block header %}
-{{ block.super }}
-<div align="center"><h1>Ingreso de Tel&eacute;fono</h1>
+
+{% block titulo %}Ingreso de Tel&eacute;fono
 {% endblock %}
-{% block nav %}
-{% endblock %}
+
 {% block contenido %}
+
+<div class='error'>
+
+</div>
+
+
 <form id="form1" name="form1" method="post" action="">
 {% csrf_token %} 
 {% if form.non_field_errors %}
 {% for error in form.non_field_errors %}
-<p style="background-color:#F00; color:#FFF"> {{error}} </p>
+<p class="error"> {{error}} </p>
 {% endfor %}
 {% endif %}
 Ingrese Tel&eacute;fono: <input name="telefono" type="text" id="telefono" 
