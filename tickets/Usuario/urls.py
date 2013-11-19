@@ -1,8 +1,12 @@
 from django.conf.urls import patterns, include, url
 
 
+'''
+urlpatterns = patterns('tickets','tickets.Usuario.views',
+url(r'^$','solicitarTelefono'), 
+)
+'''
 
-urlpatterns = patterns('tickets',
-                   # url(r'(?P<id>\d+)/?$','Usuario.views.detalle'),
-                    url(r'/?$', 'Usuario.views.index'),
-              )
+urlpatterns = patterns('tickets.Usuario.views',
+url(r'^$','solicitarTelefono'), 
+)

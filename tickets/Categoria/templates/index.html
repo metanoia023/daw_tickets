@@ -7,15 +7,17 @@
 <form id="form1" name="form1" method="post" action="">
 {% csrf_token %}
 
-Buscar: &nbsp;&nbsp;&nbsp;<input type="text" name="buscar" id="buscar" value="{% if busqueda != None %}
+Buscar: &nbsp;&nbsp;&nbsp;<input type="text" name="busqueda" id="buscar" value="{% if busqueda != None %}
 {{busqueda}} {% endif %}" />
 <input type="submit" value= " Buscar "/>
 </form>
-
+<div class='margen'>
+<span class='error'>No hay resultados para la búsqueda</span>
+</div>
 
 {% for C in categorias %}
 
-<div><a href="/categoria/{{C.id}}/{{C.nombre}}/">{{C.nombre}}
+<div class='margen'><a href="/categoria/{{C.id}}/{{C.nombre}}/">{{C.nombre}}
 </a> - {{C.descripcion}}</div>
 
 {% endfor %}
