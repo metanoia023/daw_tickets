@@ -7,56 +7,60 @@
 
 {% for E in espectaculos %}
 <table border="1" width="100%" cellspacing="0">
-<tr><td rowspan="4" width="180" height="180">(foto)</td><td colspan="2" class="nombreEspectaculo">{{E.nombre}}</td></tr>
-<tr><td colspan="2">Nombre de la gira</td></tr>
+<tr><td rowspan="3" width="180" height="180">(foto)</td><td colspan="2" class="nombreEspectaculo">{{E.nombre}}</td></tr>
 <tr><td colspan="2">{{E.hora}} - {{E.lugar.nombre}}</td></tr>
-<tr><td colspan="2" height="100%">{{E.descripcion}}</td></tr>
+<tr><td colspan="2" height="100%" style="vertical-align:top">{{E.descripcion}}</td></tr>
 <tr><td colspan="2" rowspan="2">
+
+	{% if dias < 0 %}
+        <span id="finalizado">*** Evento finalizado ***</span>
+	{% else %}
+
         D&iacute;as restantes para el inicio: {{dias}}
         <br />Cantidad de entradas vendidas: {{ticketsVendidos}}
-        <br />
-
-        {% for P in precios %}
-        <br>{{P.sector.nombre}} - $U {{P.precio}}
+        
+		{% if ticketsDisponibles != 0 %}
+			<br />Entradas restantes: {{ ticketsDisponibles }}
+			<br />
+			{% if disponibilidad <= 10 %}
+				<span id="dispBaja">Disponibilidad BAJA</span>
+			{% endif %}
+			{% if disponibilidad < 50  and  disponibilidad > 10 %}
+				<span id="dispMedia">Disponibilidad MEDIA</span>
+			{% endif %}
+			{% if disponibilidad >= 50 %}
+				<span id="dispAlta">Disponibilidad ALTA</span>
+			{% endif %}
+			<br /><br />
+		{% else %}
+			<br /><br />
+			<span id="agotadas">***Entradas agotadas***</span><br />
+		{% endif %}
+    </td>
+    
+	{% if ticketsDisponibles != 0 %}
+		<td align="right" id="botonVerMas"><a href="/compra/{{E.id}}/">Comprar</a>
+	{% endif %}
+    
+	{% endif %}
+	</td></tr><tr><td></td></tr>
+	
+	<tr><td colspan="2">
+	    {% for P in precios %}
+        <br />{{P.sector.nombre}} - $U {{P.precio}}
         {% empty %}
 			No hay sectores definidos<br/>
 		{% endfor %}
         <br />
-        
-        <br />Entradas restantes: {{ ticketsDisponibles }}
-        <br />Disponibilidad: {{ disponibilidad }}  (despues eliminar)
-        <br />
-        {% if disponibilidad <= 10 %}
-        <span id="dispBaja">Disponibilidad BAJA</span><br />
-        {% endif %}
-        {% if disponibilidad < 50  and  disponibilidad > 10 %}
-        <span id="dispMedia">Disponibilidad MEDIA</span><br />
-        {% endif %}
-        {% if disponibilidad >= 50 %}
-        <span id="dispAlta">Disponibilidad ALTA</span><br />
-        {% endif %}
+	</td></tr>
 
 
-        <br />
-        {% if ticketsDisponibles == 0 %}
-        <span id="agotadas">***Entradas agotadas***</span><br />
-        {% endif %}
-        
-        {% if now > E.hora %}
-        <span id="finalizado">*** Evento finalizado ***</span>
-        {% endif %}
-
-        </td>
-    <td align="right" id="botonVerMas"><a href="/compra/{{E.id}}/">Comprar</a></td></tr>
 </table>
 
 {% empty %}
 No existe el espect&aacute;culo<br/>
 {% endfor %}
 <br/>
-
 <br/>
-
-
 
 {% endblock %}

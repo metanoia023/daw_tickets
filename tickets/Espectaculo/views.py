@@ -2,8 +2,8 @@ from obligatorio import settings
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-
 from django.utils import timezone
+
 
 def index(request):
     from tickets.espectaculo import Espectaculo
@@ -13,13 +13,14 @@ def index(request):
 
 def detalle(request, id):
     from tickets.espectaculo import Espectaculo
-    espectaculos = Espectaculo.objects.filter(id = id)
     from tickets.precio import Precio
-    precios = Precio.objects.filter(espectaculo_id = id)
     from tickets.ticket import Ticket
+    from tickets.sector import Sector
+    
+    espectaculos = Espectaculo.objects.filter(id = id)
+    precios = Precio.objects.filter(espectaculo_id = id)
     ticketsVendidos = (Ticket.objects.filter(espectaculo_id = id)).count
 
-    from tickets.sector import Sector
     capacidad = 0
     for unPrecio in precios:
         sector = Sector.objects.filter(id = unPrecio.sector.id)
@@ -27,20 +28,14 @@ def detalle(request, id):
             capacidad += unSector.asientos
 
     ticketsDisponibles = capacidad - ticketsVendidos()
-    
-    disponibilidad = (float(ticketsDisponibles) / capacidad) * 100
+    disponibilidad = 0
+    if capacidad != 0:
+        disponibilidad = (float(ticketsDisponibles) / capacidad) * 100
     
     for unEspectaculo in espectaculos:
-        #now  = datetime.now
-        #dif = unEspectaculo.hora - now
-        #dias = dif.days
-        now = timezone.now()
-        dias = (unEspectaculo.hora - now).days
-        
-        
-    
+        dias = (unEspectaculo.hora - timezone.now()).days
+
     return  render_to_response('tickets/Espectaculo/templates/detalle.html', {'espectaculos':espectaculos, 'precios':precios, 'ticketsVendidos':ticketsVendidos, 'ticketsDisponibles':ticketsDisponibles, 'disponibilidad':disponibilidad, 'dias':dias})
-    #return  render_to_response('tickets/Espectaculo/templates/detalle.html', {'espectaculos':espectaculos})
 
 
 def busqueda(request, id): 

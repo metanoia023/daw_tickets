@@ -1,0 +1,75 @@
+{% extends "tickets/Base/base.html" %}
+{% block title %} - Compra - Paso 1{% endblock %}
+{% block titulo %}Compra de ticket - Paso 1{% endblock %}
+
+
+{% block contenido %}
+
+<form id="form1" name="form1" method="post" action="../paso2/">
+{% csrf_token %}
+
+{% for E in espectaculos %}
+
+<input type="hidden" name="idEspectaculo" id="idEspectaculo" value="{{E.id}}" />
+
+<table border="1" width="100%" cellspacing="0">
+<tr><td width="50%">
+
+	<span  class="nombreEspectaculo">{{E.nombre}}</span><br /><br />
+	Fecha: {{E.hora}}<br />
+	Lugar: {{E.lugar.nombre}}<br /><br />
+
+	<table border="1"  cellspacing="0">
+		{% for P in precios %}
+			<tr><td>{{P.sector.nombre}}</td><td>$U {{P.precio}}</td><td>Quedan x entradas</td></tr>
+		{% empty %}
+			<tr><td>No hay sectores definidos</td></tr>
+		{% endfor %}
+	</table>
+
+	<br />
+	<br />
+	{% if ticketsDisponibles == 0 %}
+	<span id="agotadas">***Entradas agotadas***</span><br />
+	{% endif %}
+	{% if now >= E.hora %}
+	<span id="finalizado">*** Evento finalizado ***</span><br />
+	{% endif %}
+	<br />
+	<br />
+</td>
+<td>
+Seleccione el sector: 
+<select id="selSector" name="selSector">
+{% for P in precios %}
+<option value="{{P.id}}">{{P.sector.nombre}}</option>
+{% empty %}
+<tr><td>No hay sectores definidos</td></tr>
+{% endfor %}
+</select>
+
+<br />
+<br />
+Cantidad de tickets: 
+<select id="selCantidad" name="selCantidad">
+{% for i in "xxxxxxxxxx" %}
+	<option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+{% endfor %}
+</select>
+
+</td>
+</tr>
+
+<tr><td></td><td></td><td align="right" id="botonVerMas"><a href="/compra/paso2/">Siguiente</a></td></tr>
+<tr><td></td><td></td><td align="right" id="botonVerMas"><input type="submit" value="Sig" /></td></tr>
+</table>
+
+{% empty %}
+No existe el espect&aacute;culo<br/>
+{% endfor %}
+<br/>
+<br/>
+
+</form>
+
+{% endblock %}
