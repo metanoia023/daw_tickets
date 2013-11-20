@@ -1,6 +1,6 @@
 {% extends "tickets/Base/base.html" %}
 {% block title %} - Listado de Espect&aacute;culos por categor&iacute;a{% endblock %}
-{% block titulo %}Listado de Espect&aacute;culos por categor&iacute;a{% endblock %}
+{% block titulo %}Listado de Espect&aacute;culos por categor&iacute;a: {{ nom }}{% endblock %}
 
 {% block estilos %}
 {% endblock %}
@@ -15,23 +15,17 @@
 <td width="20%"><strong>Fecha y hora</strong></td>
 <td width="10%"><strong>Detalle</strong></td>
 </tr>
+
 {% for E in espectaculos %}
-<tr bgcolor="{% cycle '#CCCCCC' '#DDDDDD' %}">
-<td>{{E.nombre}}</td>
-<td>{{E.descripcion}}</td>
-<td>{{E.lugar.nombre}}</td>
-<td>{{E.hora|date:"d/m/Y H:i"}}
-{{ now }}
-	{% if now >= E.hora %}
-xx
-{% else %}
-yy 
-{% endif %}
-
-</td>
-<td><a href="/espectaculo/{{E.id}}/">+&nbsp;Ampliar</a></td>
-
-</tr>
+	{% if now <= E.hora %}
+		<tr bgcolor="{% cycle '#CCCCCC' '#DDDDDD' %}">
+		<td>{{E.nombre}}</td>
+		<td>{{E.descripcion}}</td>
+		<td>{{E.lugar.nombre}}</td>
+		<td>{{E.hora|date:"d/m/Y H:i"}}</td>
+		<td><a href="/espectaculo/{{E.id}}/">+&nbsp;Ampliar</a></td>
+		</tr>
+	{% endif %}
 {% empty %}
 <tr><td colspan="3" bgcolor="#FF0000" style="color:#FFF">No existen espect&aacute;culos</td></tr>
 {% endfor %}

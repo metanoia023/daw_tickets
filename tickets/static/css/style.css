@@ -29,3 +29,17 @@ table td a:hover {text-decoration: none;}
 
 .error {color:#F03; text-height:bold}
 .margen {margin-top:20px; padding:2px auto}
+
+.botonAzul {
+    background-color: #286BCC; 
+    padding: 2px 4px;
+    font: 13px sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid #000;
+    border-color: #286BCC;
+    color: white;
+}
+input.botonAzul:hover {background-color:  #286BFF;}
+
+

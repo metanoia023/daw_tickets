@@ -2,8 +2,7 @@ from obligatorio import settings
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-
-
+from django.utils import timezone
  
 
 def index(request):
@@ -15,7 +14,9 @@ def index(request):
 def detalle(request, id, nom):
     from tickets.espectaculo import Espectaculo
     espectaculos = Espectaculo.objects.filter(categoria_id = id)
-    return  render_to_response('tickets/Categoria/templates/detalle.html', {'espectaculos':espectaculos})
+    now = timezone.now()
+    nombreCat = nom
+    return  render_to_response('tickets/Categoria/templates/detalle.html', {'espectaculos':espectaculos, 'now': now, 'nom': nom})
 
 
 def busqueda(request): 

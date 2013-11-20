@@ -2,13 +2,30 @@
 {% block title %} - Compra - Paso 2{% endblock %}
 {% block titulo %}Compra de ticket - Paso 2{% endblock %}
 
-
 {% block contenido %}
 
+<div class='error'></div>
 
-Sect: {{ sect }} <br>
-Cant: {{ cant }} <br>
-id Esp: {{ idEs }}
+<br><br>
+
+<form id="form1" name="form1" method="post" action="../paso3/">
+{% csrf_token %} 
+{% if form.non_field_errors %}
+{% for error in form.non_field_errors %}
+<p class="error"> {{error}} </p>
+{% endfor %}
+{% endif %}
+
+Ingrese su celular: &nbsp;&nbsp;
+<input name="telefono" type="text" id="telefono" value="" /> &nbsp;&nbsp;
+<input type="submit" name="button" id="button" value="Continuar" class="botonAzul" />
+
+<input type="hidden" name="idEspectaculo" id="idEspectaculo" value="{{ idEspectaculo }}" />
+<input type="hidden" name="idSector" id="idSector" value="{{ idSector }}" />
+<input type="hidden" name="cantidad" id="cantidad" value="{{ cantidad }}" />
+</form> 
+
+
 
 {% endblock %}
 

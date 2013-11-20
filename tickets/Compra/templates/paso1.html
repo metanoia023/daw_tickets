@@ -2,6 +2,10 @@
 {% block title %} - Compra - Paso 1{% endblock %}
 {% block titulo %}Compra de ticket - Paso 1{% endblock %}
 
+{% block estilos %}
+{% endblock %}
+
+
 
 {% block contenido %}
 
@@ -21,7 +25,13 @@
 
 	<table border="1"  cellspacing="0">
 		{% for P in precios %}
-			<tr><td>{{P.sector.nombre}}</td><td>$U {{P.precio}}</td><td>Quedan x entradas</td></tr>
+			<tr><td>{{P.sector.nombre}}</td><td>$U {{P.precio}}</td>
+			<td>{% for item in capacidades.items %}
+					{% if item.0 == P.sector.id %}
+						Quedan {{ item.1 }} entradas
+					{% endif %}
+				{% endfor %}
+			</td></tr>
 		{% empty %}
 			<tr><td>No hay sectores definidos</td></tr>
 		{% endfor %}
@@ -42,7 +52,20 @@
 Seleccione el sector: 
 <select id="selSector" name="selSector">
 {% for P in precios %}
-<option value="{{P.id}}">{{P.sector.nombre}}</option>
+
+			{% for item in capacidades.items %}
+					{% if item.0 == P.sector.id %}
+					{% if item.1 > 0 %}
+						<option value="{{P.id}}">{{P.sector.nombre}}</option>
+					{% endif %}
+					{% endif %}
+				{% endfor %}
+
+
+
+
+
+
 {% empty %}
 <tr><td>No hay sectores definidos</td></tr>
 {% endfor %}
@@ -60,8 +83,7 @@ Cantidad de tickets:
 </td>
 </tr>
 
-<tr><td></td><td></td><td align="right" id="botonVerMas"><a href="/compra/paso2/">Siguiente</a></td></tr>
-<tr><td></td><td></td><td align="right" id="botonVerMas"><input type="submit" value="Sig" /></td></tr>
+<tr><td></td><td></td><td align="right" id="botonVerMas"><input type="submit" value="Siguiente" class="botonAzul" /></td></tr>
 </table>
 
 {% empty %}

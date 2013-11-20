@@ -1,6 +1,6 @@
 {% extends "tickets/Base/base.html" %}
-{% block title %} - Compra - Paso 3{% endblock %}
-{% block titulo %}Compra de ticket - Paso 3{% endblock %}
+{% block title %} - Compra - Paso 4{% endblock %}
+{% block titulo %}Compra de ticket - Paso 4{% endblock %}
 
 {% block contenido %}
 
@@ -8,8 +8,7 @@
 
 <br><br>
 
-<form id="form1" name="form1" method="post" action="../paso4/">
-
+<form id="form1" name="form1" method="post" action="">
 {% csrf_token %} 
 {% if form.non_field_errors %}
 {% for error in form.non_field_errors %}
@@ -20,13 +19,11 @@
 Ingrese el PIN enviado a su celular: &nbsp;&nbsp;
 <input name="pin" type="text" id="pin" value="" /> &nbsp;&nbsp;
 <input type="submit" name="button" id="button" value="Continuar" class="botonAzul" />
+</form> 
 
-<input type="hidden" name="numTel" id="numTel" value="{{ numTel }}" />
 <input type="hidden" name="idEspectaculo" id="idEspectaculo" value="{{ idEspectaculo }}" />
 <input type="hidden" name="idSector" id="idSector" value="{{ idSector }}" />
 <input type="hidden" name="cantidad" id="cantidad" value="{{ cantidad }}" />
-
-</form> 
 
 
 {% endblock %}
