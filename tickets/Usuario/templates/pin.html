@@ -1,0 +1,22 @@
+{% extends "tickets/Base/base.html" %}
+{% block title %} - Ingreso de Pin{% endblock %}
+
+{% block titulo %}
+Ingreso de Pin
+{% endblock %}
+
+{% block contenido %}
+
+
+<form id="form1" name="form1" method="post" action="">
+{% csrf_token %} 
+{% if form.non_field_errors %}
+{% for error in form.non_field_errors %}
+<p class="error"> {{error}} </p>
+{% endfor %}
+{% endif %}
+Ingrese Pin de 4 dígitos: <input name="pin" type="text" id="pin" 
+value="{{form.pin.value}}" /> <input type="submit" name="button" id="button" 
+value="Continuar" />
+</form> 
+{% endblock %}
