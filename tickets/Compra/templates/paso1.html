@@ -14,9 +14,10 @@
 
 {% for E in espectaculos %}
 
+<br />
 <input type="hidden" name="idEspectaculo" id="idEspectaculo" value="{{E.id}}" />
 
-<table border="1" width="100%" cellspacing="0">
+<table border="0" width="100%" cellspacing="0">
 <tr><td width="50%">
 
 	<span  class="nombreEspectaculo">{{E.nombre}}</span><br /><br />
@@ -56,7 +57,7 @@ Seleccione el sector:
 			{% for item in capacidades.items %}
 					{% if item.0 == P.sector.id %}
 					{% if item.1 > 0 %}
-						<option value="{{P.id}}">{{P.sector.nombre}}</option>
+						<option value="{{P.sector.id}}">{{P.sector.nombre}}</option>
 					{% endif %}
 					{% endif %}
 				{% endfor %}

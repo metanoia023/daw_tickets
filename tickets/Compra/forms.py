@@ -27,7 +27,8 @@ class PinForm(forms.Form):
    
     def clean(self):
         datos = super(PinForm, self).clean()
-        pin = cleaned_data.get('pin') 
+        #pin = cleaned_data.get('pin') 
+        pin = datos.get('pin')
         if pin is not None and not pin.isdigit():
             raise forms.ValidationError('Ingrese solo numeros') 
         if pin is not None and len(pin) != 4: 

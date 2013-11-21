@@ -16,14 +16,27 @@
 {% endfor %}
 {% endif %}
 
-Ingrese el PIN enviado a su celular: &nbsp;&nbsp;
-<input name="pin" type="text" id="pin" value="" /> &nbsp;&nbsp;
-<input type="submit" name="button" id="button" value="Continuar" class="botonAzul" />
-</form> 
 
-<input type="hidden" name="idEspectaculo" id="idEspectaculo" value="{{ idEspectaculo }}" />
-<input type="hidden" name="idSector" id="idSector" value="{{ idSector }}" />
-<input type="hidden" name="cantidad" id="cantidad" value="{{ cantidad }}" />
 
+</form>
+
+{% if verificaCompra %}
+	<h2>Felicitaciones!!</h2><br>
+	Su compra se ha procesado con &eacute;xito.
+{% else %}
+	<h2>Lo sentimos</h2><br>
+	Hubo un error y su compra no pudo procesarse.
+	<br>
+	<br>
+	<div>{{ msg }}</div>
+	<br>
+	<a href="../{{idEspectaculo}}/"><button class="botonAzul"> Intentar de nuevo </button></a>
+	
+{% endif %}
 
 {% endblock %}
+
+
+
+
+

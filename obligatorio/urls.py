@@ -19,6 +19,7 @@ urlpatterns = patterns(
 	url(r'^sector/', include('tickets.Sector.urls')),
 	url(r'^precio/', include('tickets.Precio.urls')),
 	url(r'^ticket/', include('tickets.Ticket.urls')),
+    url(r'^pin/', include('tickets.Pin.urls')),
 	url(r'^usuario/', include('tickets.Usuario.urls')),
     url(r'^static/(.*)$', 'django.views.static.serve', {'tickets': '/static/css/style.css'}),
 

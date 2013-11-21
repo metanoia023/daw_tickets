@@ -6,7 +6,7 @@
 {% block contenido %}
 
 {% for E in espectaculos %}
-<table border="1" width="100%" cellspacing="0">
+<table border="0" width="100%" cellspacing="0">
 <tr><td rowspan="3" width="180" height="180">(foto)</td><td colspan="2" class="nombreEspectaculo">{{E.nombre}}</td></tr>
 <tr><td colspan="2">{{E.hora}} - {{E.lugar.nombre}}</td></tr>
 <tr><td colspan="2" height="100%" style="vertical-align:top">{{E.descripcion}}</td></tr>
