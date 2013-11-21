@@ -1,0 +1,16 @@
+{% extends "tickets/Base/base.html" %}
+{% block title %} - Compra - Paso 4{% endblock %}
+{% block titulo %}Compra de ticket - Paso 4{% endblock %}
+
+{% block contenido %}
+
+<div class='felicitaciones'>
+{{Usuario.nombre}}, se ha finalizado tu compra, retira tu entrada con el número de documento 
+{{Usuario.cedula}} en {{Ticket.Espectaculo.Lugar}} el día {{Ticket.Espectaculo.fechaHora}}
+
+
+</div>
+
+
+
+{% endblock %}
