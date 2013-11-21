@@ -1,11 +1,11 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 2.10.2
 -- http://www.phpmyadmin.net
 -- 
 -- Servidor: localhost
--- Tiempo de generaci�n: 20-11-2013 a las 16:09:12
--- Versi�n del servidor: 5.0.45
--- Versi�n de PHP: 5.2.3
+-- Tiempo de generación: 21-11-2013 a las 17:11:19
+-- Versión del servidor: 5.0.45
+-- Versión de PHP: 5.2.3
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -141,7 +141,7 @@ CREATE TABLE `auth_user` (
 -- Volcar la base de datos para la tabla `auth_user`
 -- 
 
-INSERT INTO `auth_user` VALUES (1, 'admin', '', '', 'admin@admin.com', 'pbkdf2_sha256$10000$HsiDTb3Lf3MJ$+EnmpWK5Tc5z+xzWq2X+f0A6YvbzU5RXutO36Lwke+U=', 1, 1, 1, '2013-11-20 18:05:09', '2013-11-20 18:05:09');
+INSERT INTO `auth_user` VALUES (1, 'admin', '', '', 'admin@admin.com', 'pbkdf2_sha256$10000$mwZP7NuMI72q$FZvnWtOerlTHjtMTVfkz3pAENKy5TeMhsvpKMLugGR0=', 1, 1, 1, '2013-11-21 17:08:46', '2013-11-21 17:08:46');
 
 -- --------------------------------------------------------
 
@@ -274,11 +274,11 @@ CREATE TABLE `tickets_categoria` (
 -- Volcar la base de datos para la tabla `tickets_categoria`
 -- 
 
-INSERT INTO `tickets_categoria` VALUES (1, 'M', 'Son espect');
+INSERT INTO `tickets_categoria` VALUES (1, 'Música', 'Son espectáculos musicales');
 INSERT INTO `tickets_categoria` VALUES (2, 'Teatro', 'Son piezas teatrales');
 INSERT INTO `tickets_categoria` VALUES (3, 'Danza', 'Son shows de distintos tipos de danza');
 INSERT INTO `tickets_categoria` VALUES (4, 'Stand Up', 'Comediantes de pie hacen chistes');
-INSERT INTO `tickets_categoria` VALUES (5, 'Otros', 'Espect');
+INSERT INTO `tickets_categoria` VALUES (5, 'Otros', 'Espectáculos varios');
 
 -- --------------------------------------------------------
 
@@ -303,7 +303,7 @@ CREATE TABLE `tickets_espectaculo` (
 -- Volcar la base de datos para la tabla `tickets_espectaculo`
 -- 
 
-INSERT INTO `tickets_espectaculo` VALUES (1, 'Laura Pausini', 1, 1, '2014-02-08 20:00:00', 0, 'El mejor espectaculo del a');
+INSERT INTO `tickets_espectaculo` VALUES (1, 'Laura Pausini', 1, 1, '2014-02-08 20:00:00', 0, 'El mejor espectáculo del año no te lo podés perder');
 INSERT INTO `tickets_espectaculo` VALUES (2, 'Marc Anthony', 2, 1, '2014-01-24 21:00:00', 0, 'Marc Antony el mejor cantante latino de baladas romanticas');
 INSERT INTO `tickets_espectaculo` VALUES (3, 'Maria Callas', 3, 1, '2013-10-01 19:00:00', 0, 'La diva numero uno de la opera contemporanea');
 INSERT INTO `tickets_espectaculo` VALUES (4, 'Disney en Hielo', 3, 5, '2014-04-01 17:00:00', 0, 'Llega Disney sobre Hielo para delicia de chicos y grandes.');
@@ -336,17 +336,16 @@ INSERT INTO `tickets_lugar` VALUES (4, 'Cine Plaza');
 -- 
 
 CREATE TABLE `tickets_pin` (
-  `id` int(11) NOT NULL auto_increment,
   `numero` int(11) NOT NULL,
-  `telefono_id` int(11) NOT NULL,
-  PRIMARY KEY  (`id`),
-  KEY `tickets_pin_1d373260` (`telefono_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `telefono_id` varchar(9) NOT NULL,
+  PRIMARY KEY  (`telefono_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- 
 -- Volcar la base de datos para la tabla `tickets_pin`
 -- 
 
+INSERT INTO `tickets_pin` VALUES (8489, '099421030');
 
 -- --------------------------------------------------------
 
@@ -430,8 +429,7 @@ CREATE TABLE `tickets_ticket` (
   `espectaculo_id` int(11) NOT NULL,
   `fecha` datetime NOT NULL,
   `precio` decimal(6,2) NOT NULL,
-  `pin` int(11) NOT NULL,
-  `usuario_id` int(11) NOT NULL,
+  `usuario_id` varchar(9) NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `tickets_ticket_94c48b8` (`sector_id`),
   KEY `tickets_ticket_1f728237` (`espectaculo_id`),
@@ -442,10 +440,10 @@ CREATE TABLE `tickets_ticket` (
 -- Volcar la base de datos para la tabla `tickets_ticket`
 -- 
 
-INSERT INTO `tickets_ticket` VALUES (1, 25, 1, '2013-11-18 16:27:49', 3000.00, 1234, 1);
-INSERT INTO `tickets_ticket` VALUES (2, 25, 1, '2013-11-18 16:39:25', 3000.00, 1234, 2);
-INSERT INTO `tickets_ticket` VALUES (3, 30, 2, '2013-11-18 16:39:41', 1000.00, 1234, 2);
-INSERT INTO `tickets_ticket` VALUES (4, 25, 1, '2013-11-18 16:40:17', 3000.00, 1234, 4);
+INSERT INTO `tickets_ticket` VALUES (1, 25, 1, '2013-11-18 16:27:49', 3000.00, '99177848');
+INSERT INTO `tickets_ticket` VALUES (2, 25, 1, '2013-11-18 16:39:25', 3000.00, '99404325');
+INSERT INTO `tickets_ticket` VALUES (3, 30, 2, '2013-11-18 16:39:41', 1000.00, '99404325');
+INSERT INTO `tickets_ticket` VALUES (4, 25, 1, '2013-11-18 16:40:17', 3000.00, '94109288');
 
 -- --------------------------------------------------------
 
@@ -454,18 +452,17 @@ INSERT INTO `tickets_ticket` VALUES (4, 25, 1, '2013-11-18 16:40:17', 3000.00, 1
 -- 
 
 CREATE TABLE `tickets_usuario` (
-  `id` int(11) NOT NULL auto_increment,
   `nombre` varchar(30) NOT NULL,
   `telefono` varchar(9) NOT NULL,
   `documento` varchar(11) NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  PRIMARY KEY  (`telefono`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- 
 -- Volcar la base de datos para la tabla `tickets_usuario`
 -- 
 
-INSERT INTO `tickets_usuario` VALUES (1, 'Lucia Araujo', '099177848', '31995210');
-INSERT INTO `tickets_usuario` VALUES (2, 'Maria Ronchi', '099404325', '39876051');
-INSERT INTO `tickets_usuario` VALUES (3, 'Juan Garcia', '099421030', '10239916');
-INSERT INTO `tickets_usuario` VALUES (4, 'Fernando Rosa', '094109288', '24406465');
+INSERT INTO `tickets_usuario` VALUES ('Lucia Araujo', '099177848', '31995210');
+INSERT INTO `tickets_usuario` VALUES ('Maria Ronchi', '099404325', '39876051');
+INSERT INTO `tickets_usuario` VALUES ('Juan Garcia', '099421030', '10239916');
+INSERT INTO `tickets_usuario` VALUES ('Fernando Rosa', '094109288', '24406465');
