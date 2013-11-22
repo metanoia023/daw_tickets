@@ -1,0 +1,99 @@
+{% extends "tickets/Base/base.html" %}
+{% block title %} - Mantenimiento de Espect&aacute;culos{% endblock %}
+{% block titulo %}Mantenimiento de Espect&aacute;culos{% endblock %}
+
+
+{% block contenido %}
+
+
+<h3>Ingresar nuevo espect&aacute;culo</h3>
+<br />
+
+<form id="form" name="form" method="post" action="">
+<table border="0" width="100%" cellspacing="0">
+<tr><td>Nombre: </td><td><input type="text" name="nombre"></input></td></tr>
+
+<tr><td>Categoria: </td><td>
+<select id="selCategoria" name="selCategoria">
+{% for C in categorias %}
+	<option value="{{C.id}}">{{C.nombre}}</option>
+{% empty %}
+	No hay categorias definidas</td></tr>
+{% endfor %}
+</select>
+</td></tr>
+
+<tr><td>Lugar: </td><td>
+<select id="selLugar" name="selLugar">
+{% for L in lugares %}
+	<option value="{{L.id}}">{{L.nombre}}</option>
+{% empty %}
+	No hay lugares definidos</td></tr>
+{% endfor %}
+</select>
+
+</td></tr>
+<tr><td>Fecha: </td><td><input type="text" name="fecha"></input></td>
+<td><input type="submit" value="Ingresar" class="botonAzul" name="Nuevo" />
+</tr>
+<tr><td>Estado: </td><td><input type="text" name="estado"></input></td></tr>
+<tr><td>Descripci&oacute;n: </td><td><input type="text" name="descripcion"></input></td></tr>
+</table>
+<hr>
+</form>
+
+<br />
+<br />
+
+<h3>Actualizar espect&aacute;culo</h3>
+
+<br />
+
+{% for E in espectaculos %}
+<form id="form{{E.id}}" name="form{{E.id}}" method="post" action="">
+<table border="0" width="100%" cellspacing="0">
+<tr><td>Nombre: </td><td><input type="text" name="nombre{{E.id}}" value="{{E.nombre}}"></input></td></tr>
+
+<tr><td>Categoria: </td><td>
+<select id="selCategoria{{E.id}}" name="selCategoria{{E.id}}">
+{% for C in categorias %}
+	{% if C.id == E.categoria.id %}
+		<option value="{{C.id}}" selected>{{C.nombre}}</option>
+	{% else %}
+		<option value="{{C.id}}">{{C.nombre}}</option>
+	{% endif %}
+{% empty %}
+	No hay categorias definidas</td></tr>
+{% endfor %}
+</select>
+</td></tr>
+
+<tr><td>Lugar: </td><td>
+<select id="selLugar{{E.id}}" name="selLugar{{E.id}}">
+{% for L in lugares %}
+	{% if L.id == E.lugar.id %}
+		<option value="{{L.id}}" selected>{{L.nombre}}</option>
+	{% else %}
+		<option value="{{L.id}}">{{L.nombre}}</option>
+	{% endif %}
+{% empty %}
+	No hay lugares definidos</td></tr>
+{% endfor %}
+</select>
+
+
+
+</td></tr>
+<tr><td>Fecha: </td><td><input type="text" name="fecha{{E.id}}" value="{{E.hora}}"></input></td>
+<td><input type="submit" value="Actualizar" class="botonAzul" name="{{E.id}}" />
+</tr>
+<tr><td>Estado: </td><td><input type="text" name="estado{{E.id}}" value="{{E.estado}}"></input></td></tr>
+<tr><td>Descripci&oacute;n: </td><td><input type="text" name="descripcion{{E.id}}" value="{{E.descripcion}}"></input></td></tr>
+</table>
+<hr>
+</form>
+{% endfor %}
+<br />
+<br />
+
+{% endblock %}

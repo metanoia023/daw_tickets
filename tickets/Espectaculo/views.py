@@ -54,4 +54,22 @@ def detalle(request, id):
 #===============================================================================
 
 
+def crud(request):
+    from tickets.espectaculo import Espectaculo
+    from tickets.categoria import Categoria
+    from tickets.lugar import Lugar
+    
+    espectaculos = Espectaculo.objects.all()
+    categorias = Categoria.objects.all()
+    lugares = Lugar.objects.all()
+    
+    
+    return render_to_response('tickets/Espectaculo/templates/crud.html', {'espectaculos':espectaculos, 'categorias':categorias, 'lugares':lugares})
+
+
+
+
+    
+    
+    
    
