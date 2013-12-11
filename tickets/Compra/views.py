@@ -9,7 +9,7 @@ import random
 
 def index(request):
     from tickets.categoria import Categoria
-    categorias = Categoria.objects.all()   
+    categorias = Categoria.objects.all()
     return  render_to_response('tickets/Categoria/templates/index.html',{'categorias':categorias})
 
 def paso1(request, id):
