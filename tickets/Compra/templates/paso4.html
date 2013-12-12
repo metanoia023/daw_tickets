@@ -3,6 +3,7 @@
 {% block titulo %}Compra de ticket - Paso 4{% endblock %}
 
 {% block contenido %}
+<!-- Compra/paso4 -->
 
 <div class='error'></div>
 
@@ -21,10 +22,15 @@
 </form>
 
 {% if verificaCompra %}
-	<h2>Felicitaciones!!</h2><br>
-	Su compra se ha procesado con &eacute;xito.
+	<h2>Felicitaciones!!</h2>
+	<br>
+	{% for ticket in tickets %}
+	Se ha finalizado tu compra, retira tu entrada con el n&uacute;mero de documento {{ documento }} 
+	en {{ticket.espectaculo.lugar}} el d&iacute;a {{ticket.espectaculo.hora|date:"d \d\e F \d\e Y"}}.
+	{% endfor %}
 {% else %}
-	<h2>Lo sentimos</h2><br>
+	<h2>Lo sentimos</h2>
+	<br>
 	Hubo un error y su compra no pudo procesarse.
 	<br>
 	<br>

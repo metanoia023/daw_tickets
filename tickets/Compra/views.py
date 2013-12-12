@@ -89,6 +89,8 @@ def paso4(request):
     cantidad = int(request.POST.get('cantidad'))
     idEspectaculo = request.POST.get('idEspectaculo')
     
+    tickets = Ticket.objects.filter (espectaculo_id = idEspectaculo)
+    
     pinBD = 0000
     pre = 0
     saldo = 0
@@ -131,6 +133,7 @@ def paso4(request):
                     try:
                         precio = int(Precio.objects.get(sector_id = idSector).precio)
                         total = precio * cantidad
+                        
                         if int(saldo) >= int(total):
                             for i in range(1, cantidad):
                                 T = Ticket()
@@ -141,6 +144,10 @@ def paso4(request):
                                 T.usuario = Usuario.objects.get(telefono = numTel)
                                 T.save()
                             verificaCompra = True
+                            U = Usuario.objects.get(telefono = numTel)
+                            documento = U.documento
+                            
+                            
                         else:
                             msg = 'Su saldo es insuficiente. Intente nuevamente.'
                     except Exception as e: 
@@ -154,7 +161,7 @@ def paso4(request):
         form = PinForm({'numTel':numTel}) 
         
     
-    return  render_to_response('tickets/Compra/templates/paso4.html', {"idSector":idSector, "cantidad":cantidad, "idEspectaculo":idEspectaculo, 'numTel':numTel, 'pinIngresado':pinIngresado, 'pinBD':pinBD, 'msg':msg, 'precio':precio, 'saldo':saldo, 'verificaCompra':verificaCompra}, context_instance = RequestContext(request))
+    return  render_to_response('tickets/Compra/templates/paso4.html', {'tickets':tickets, 'documento':documento, 'msg':msg, 'verificaCompra':verificaCompra}, context_instance = RequestContext(request))
 
 
 

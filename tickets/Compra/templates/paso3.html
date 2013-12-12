@@ -3,6 +3,7 @@
 {% block titulo %}Compra de ticket - Paso 3{% endblock %}
 
 {% block contenido %}
+<!-- Compra/paso3 -->
 
 <div class='error'></div>
 
@@ -28,8 +29,9 @@ Ingrese el PIN enviado a su celular: &nbsp;&nbsp;
 <input type="hidden" name="cantidad" id="cantidad" value="{{ cantidad }}" /><br />
 <br />
 <br />
+{% if debug %}
 {{ pinGenerado }}
-
+{% endif %}
 </form> 
 
 
