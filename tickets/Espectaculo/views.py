@@ -6,6 +6,11 @@ from django.utils import timezone
 
 #from django.core.context_processors import csrf
 
+#Aca empieza el codigo para el afiche - esta incompleto
+def muestro_afiche(request, id):
+	from tickets.espectaculo import Espectaculo
+    espectaculo= Espectaculo.objects.get(id=id)
+    return render_to_response('afiche.html', {'espectaculos': espectaculos})
 
 
 def index(request):

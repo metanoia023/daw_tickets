@@ -6,11 +6,20 @@
 {% block contenido %}
 
 {% for E in espectaculos %}
+
+<!-- Aca empieza el codigo para el afiche -->
+
+<a href="{{ E.get_absolute_url }}">Ver afiche de{{ E.nombre }}</a>
+
+
+
 <table border="0" width="100%" cellspacing="0">
 <tr><td rowspan="3" width="180" height="180">(foto)</td><td colspan="2" class="nombreEspectaculo">{{E.nombre}}</td></tr>
 <tr><td colspan="2">{{E.hora}} - {{E.lugar.nombre}}</td></tr>
 <tr><td colspan="2" height="100%" style="vertical-align:top">{{E.descripcion}}</td></tr>
 <tr><td colspan="2" rowspan="2">
+
+
 
 	{% if dias < 0 %}
         <span id="finalizado">*** Evento finalizado ***</span>

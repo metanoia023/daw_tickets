@@ -18,6 +18,11 @@ class Espectaculo(models.Model):
         espectaculos = Espectaculo.objects.all()
         categorias = Categoria.objects.all()
         lugares = Lugar.objects.all()
+		
+	#Aca empieza codigo para afiche	
+		
+	def get_absolute_url(self):
+		return "/Espectaculo/%i/" % self.id	
         
     
     
