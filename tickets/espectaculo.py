@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 class Espectaculo(models.Model):
     nombre = models.CharField(max_length = 20) 
@@ -18,8 +19,13 @@ class Espectaculo(models.Model):
         espectaculos = Espectaculo.objects.all()
         categorias = Categoria.objects.all()
         lugares = Lugar.objects.all()
-		
-	#Aca empieza codigo para afiche	
+
+
+    def __unicode__(self): 
+        return '{0} - {1}'.format(self.nombre, self.hora.strftime("%d/%m/%y"))
+
+	
+    #Aca empieza codigo para afiche	
 		
 	def get_absolute_url(self):
 		return "/Espectaculo/%i/" % self.id	

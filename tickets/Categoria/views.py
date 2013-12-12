@@ -29,6 +29,6 @@ def busqueda(request):
     return render_to_response('tickets/Categoria/templates/index.html', {'categorias':categorias,'busqueda':busqueda}, context_instance = RequestContext(request))
     
     
-def buscarTodos (request):
-        categorias = Categoria.objects.all() 
+#def buscarTodos (request):
+#        categorias = Categoria.objects.all() 
     

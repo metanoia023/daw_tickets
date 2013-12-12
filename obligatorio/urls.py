@@ -4,6 +4,9 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from obligatorio import settings
 
+# Si no esta agregar para que pueda editar en el backend:
+# admin.autodiscover()
+admin.autodiscover()
 
 urlpatterns = patterns(
     '',
@@ -20,7 +23,6 @@ urlpatterns = patterns(
 	url(r'^usuario/', include('tickets.Usuario.urls')),
     url(r'^static/(.*)$', 'django.views.static.serve', {'tickets': '/static/css/style.css'}),
     url(r'^backend/', include(admin.site.urls)),
-    url(r'^admin/', include(admin.site.urls)),
 
     url(r'^afiche/', include('tickets.Espectaculo.urls')),
 
