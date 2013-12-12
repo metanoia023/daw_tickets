@@ -24,7 +24,9 @@ urlpatterns = patterns(
     url(r'^static/(.*)$', 'django.views.static.serve', {'tickets': '/static/css/style.css'}),
     url(r'^backend/', include(admin.site.urls)),
 
-    url(r'^afiche/', include('tickets.Espectaculo.urls')),
+    url(r'^afiches?/?', include('tickets.Espectaculo.urls')),
+    url(r'^imgs/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    
 
 )
 

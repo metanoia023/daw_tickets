@@ -17,7 +17,8 @@ Buscar: &nbsp;&nbsp;&nbsp;<input type="text" name="buscar" id="buscar" value="{%
 
 {% for E in espectaculos %}
 <table border="0" width="100%" cellspacing="0">
-<tr><td rowspan="3" width="80" height="80">(foto)</td><td colspan="2" class="nombreEspectaculo">{{E.nombre}}</td></tr>
+<tr><td rowspan="3" width="80" height="80"><img height="80" src="http://localhost:8000/imgs/afiches/{{E.nombre.split|join:''}}.jpg" alt="{{E.nombre}}"></td>
+    <td colspan="2" class="nombreEspectaculo">{{E.nombre}}</td></tr>
 <tr><td colspan="2">{{E.descripcion}}</td></tr>
 <tr><td>{{E.hora|date:"d \d\e M \d\e Y, H:i\h"}} - {{E.lugar.nombre}}</td>
     <td align="right" id="botonVerMas"><a href="/espectaculo/{{E.id}}/">&nbsp;+&nbsp;Ampliar&nbsp;</a></td></tr>

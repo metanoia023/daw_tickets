@@ -2,23 +2,41 @@
 {% block title %} - Afiche del evento{% endblock %}
 {% block titulo %}Afiche del evento{% endblock %}
 
+{% block estilos %}
+#divAfiche {height:400px; width:400px; border: 1px solid black;}
+#divAficheTextoGrande, #divAficheTextoChico {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-style: italic;
+	font-weight: bold;
+	color: white;
+	text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black;
+	padding-left: 20px;
+}
+#divAficheTextoGrande {font-size: 35px; position: relative; top: -400px;}
+#divAficheTextoChico {font-size: 25px; position: relative; top: -150px;}
+
+
+
+{% endblock %}
+
 {% block contenido %}
 <!-- Espectaculo/afiche -->
 
-<table border="1" width="100%" cellspacing="0">
 {% for E in espectaculos %}
 
-<tr><td width="180" height="180">(foto)</td>
-    <td>{{E.nombre}}</td>
-    <td>{{E.hora}} - {{E.lugar.nombre}}</td>
-</tr>
+<div id="divAfiche">
+
+<img height="400" src="http://localhost:8000/imgs/afiches/{{E.nombre.split|join:''}}.jpg" alt="{{E.nombre}}">
+
+<div id="divAficheTextoGrande">{{E.nombre}}</div>
+<div id="divAficheTextoChico">{{E.hora}}<br>{{E.lugar.nombre}}</div>
 
 
 {% empty %}
 <tr><td>No existe el espect&aacute;culo</td></tr>
 {% endfor %}
 
-</table>
+</div>
 <br/>
 
 {% endblock %}
