@@ -1,0 +1,27 @@
+{% extends "tickets/Base/base.html" %}
+{% block title %} - Listado de Categor&iacute;as{% endblock %}
+{% block titulo %}Listado de Categor&iacute;as{% endblock %}
+
+{% block contenido %}
+
+<!-- Categoria/index -->
+
+<form id="form1" name="form1" method="post" action="">
+{% csrf_token %}
+
+Buscar: &nbsp;&nbsp;&nbsp;<input type="text" name="busqueda" id="busqueda" value="{% if busqueda != None %}{{busqueda}}{% endif %}" />
+<input type="submit" value= " Buscar "/>
+</form>
+<div class='margen'>
+{% if categorias.count == 0 %}
+<span class='error'>No hay resultados para la b&uacute;squeda</span>
+{% endif %}
+</div>
+
+{% for C in categorias %}
+
+<div class='margen'><a href="/categoria/{{C.id}}/{{C.nombre.split|join:''}}/">{{C.nombre}}
+</a> - {{C.descripcion}}</div>
+
+{% endfor %}
+{% endblock %}

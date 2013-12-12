@@ -1,17 +1,24 @@
 {% extends "tickets/Base/base.html" %}
 {% block title %} - Afiche del evento{% endblock %}
-{% block titulo %}{{E.nombre}}{% endblock %}
-{% block titulo %}{{E.lugar.nombre}}{% endblock %}
-{% block titulo %}{{E.hora}}{% endblock %}
-
+{% block titulo %}Afiche del evento{% endblock %}
 
 {% block contenido %}
+<!-- Espectaculo/afiche -->
 
+<table border="1" width="100%" cellspacing="0">
 {% for E in espectaculos %}
 
+<tr><td width="180" height="180">(foto)</td>
+    <td>{{E.nombre}}</td>
+    <td>{{E.hora}} - {{E.lugar.nombre}}</td>
+</tr>
 
-<table border="0" width="100%" cellspacing="0">
-<tr><td rowspan="3" width="180" height="180">(foto)</td>
-<tr><td colspan="2">{{E.hora}} - {{E.lugar.nombre}}</td></tr>
+
+{% empty %}
+<tr><td>No existe el espect&aacute;culo</td></tr>
+{% endfor %}
 
 </table>
+<br/>
+
+{% endblock %}

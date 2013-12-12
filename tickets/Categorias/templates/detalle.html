@@ -1,0 +1,38 @@
+{% extends "tickets/Base/base.html" %}
+{% block title %} - Listado de Espect&aacute;culos por categor&iacute;a{% endblock %}
+{% block titulo %}Listado de Espect&aacute;culos por categor&iacute;a: {{ nom }}{% endblock %}
+
+{% block estilos %}
+{% endblock %}
+
+{% block contenido %}
+
+<!-- Categoria/detalle -->
+
+<table border="0" align="center" cellspacing="1">
+<tr>
+<td width="17%"><strong>Nombre</strong></td>
+<td width="28%"><strong>Descripci&oacute;n</strong></td>
+<td width="25%"><strong>Lugar</strong></td>
+<td width="20%"><strong>Fecha y hora</strong></td>
+<td width="10%"><strong>Detalle</strong></td>
+</tr>
+
+{% for E in espectaculos %}
+	{% if now <= E.hora %}
+		<tr bgcolor="{% cycle '#CCCCCC' '#DDDDDD' %}">
+		<td>{{E.nombre}}</td>
+		<td>{{E.descripcion}}</td>
+		<td>{{E.lugar.nombre}}</td>
+		<td>{{E.hora|date:"d/m/Y H:i"}}</td>
+		<td><a href="/espectaculo/{{E.id}}/">+&nbsp;Ampliar</a></td>
+		</tr>
+	{% endif %}
+{% empty %}
+<tr><td>&nbsp;</td></tr>
+<tr><td colspan="5" class="filaSinResultados">No existen espect&aacute;culos para esta categor&iacute;a</td></tr>
+{% endfor %}
+</table>
+
+
+{% endblock %}

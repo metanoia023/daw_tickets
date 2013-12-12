@@ -12,7 +12,9 @@ TEMPLATE_DEBUG = DEBUG
 INTERNAL_IPS = ('127.0.0.1')
 
 ADMINS = (
-    #('Mery', 'metanoia023@gmail.com'),
+    ('admin', 'admin@admin.com'),
+    ('Mery', 'metanoia023@gmail.com'),
+    ('Gaby', 'gaby11923@gmail.com')
 )
 
 MANAGERS = ADMINS
@@ -85,7 +87,7 @@ STATICFILES_DIRS = (os.path.join("daw_tickets/tickets/static/css/style.css", "st
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-   'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -105,6 +107,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    
+    
+    
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -129,15 +134,16 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'django.contrib.messages.context_processors.messages',
+    'django.contrib.auth.context_processors.auth'
 )
 
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'django.contrib.messages',
     'django.contrib.staticfiles',
     'tickets',
     # Uncomment the next line to enable the admin:

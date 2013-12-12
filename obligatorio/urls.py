@@ -19,7 +19,10 @@ urlpatterns = patterns(
     url(r'^pin/', include('tickets.Pin.urls')),
 	url(r'^usuario/', include('tickets.Usuario.urls')),
     url(r'^static/(.*)$', 'django.views.static.serve', {'tickets': '/static/css/style.css'}),
-    #url(r'^backend/', include(admin.site.urls)),
+    url(r'^backend/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^afiche/', include('tickets.Espectaculo.urls')),
 
 )
 

@@ -8,9 +8,10 @@ from django.utils import timezone
 
 #Aca empieza el codigo para el afiche - esta incompleto
 def muestro_afiche(request, id):
-	from tickets.espectaculo import Espectaculo
-    espectaculo= Espectaculo.objects.get(id=id)
-    return render_to_response('afiche.html', {'espectaculos': espectaculos})
+    from tickets.espectaculo import Espectaculo
+    espectaculos = Espectaculo.objects.filter(id = id)
+    #return render_to_response('afiche.html', {'espectaculos': espectaculos})
+    return render_to_response('tickets/Espectaculo/templates/afiche.html', {'espectaculos': espectaculos})
 
 
 def index(request):
@@ -24,7 +25,6 @@ def detalle(request, id):
     from tickets.precio import Precio
     from tickets.ticket import Ticket
     from tickets.sector import Sector
-    
 
     espectaculos = Espectaculo.objects.filter(id = id)
     precios = Precio.objects.filter(espectaculo_id = id)

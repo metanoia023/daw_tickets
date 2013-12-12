@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from categoria import Categoria
 from espectaculo import Espectaculo 
+from categoria import Categoria
 from lugar import Lugar
 from precio import Precio 
 from sector import Sector

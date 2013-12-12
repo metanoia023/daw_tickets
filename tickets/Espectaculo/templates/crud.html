@@ -4,22 +4,15 @@
 
 
 {% block contenido %}
-
+<!-- Espectaculo/crud -->
 
 <h3>Ingresar nuevo espect&aacute;culo</h3>
-<br />Msg: {{ msg }}
-<br />
 <br />
 {% if form.errors %}
     <p>Hubo un error.</p>
 {% endif %}
 <br />
-<br />
 
-id Esp:{{id}}
-
-<br />
-<br />
 <form id="form" name="form" method="post" action="">
 {% csrf_token %}
 
@@ -85,7 +78,7 @@ id Esp:{{id}}
 <tr><td>Estado: </td><td><input type="text" name="estado"></input></td></tr>
 <tr><td>Descripci&oacute;n: </td><td><input type="text" name="descripcion"></input></td></tr>
 </table>
-<hr>
+<br><hr>
 <!-- </form> -->
 
 <br />
@@ -173,7 +166,7 @@ id Esp:{{id}}
 <tr><td>Estado: </td><td><input type="text" name="estado{{E.id}}" value="{{E.estado}}"></input></td></tr>
 <tr><td>Descripci&oacute;n: </td><td><input type="text" name="descripcion{{E.id}}" value="{{E.descripcion}}"></input></td></tr>
 </table>
-<hr>
+<br><hr><br>
 <!-- </form> -->
 {% endfor %}
 <br />
